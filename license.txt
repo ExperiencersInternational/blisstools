@@ -1,0 +1,8 @@
+blisstools (C) FlynnFarrow 2022
+
+Throughout this license, blisstools may be mentioned as 'plugin' or 'project' and FlynnFarrow may be mentioned as the 'owner' or the 'creator'.
+
+License terms:
+- Anyone can use this for free
+- You cannot sell this plugin un-modified from the original version (FlynnFarrow/blisstools)
+- Attribution is required in any forks of this plugin
