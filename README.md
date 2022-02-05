@@ -15,3 +15,9 @@ When downloading from Roblox, ignore this following guide, but if you are downlo
 ## Open-source licenses
 
 Decal2Image: https://github.com/r1a9c8c4/decal2image
+
+## Making contributions
+
+Contributions are absolutely appreciated! We know that this project is not using Rojo, and I have no plans to, editing UI is better visually imo, but if you want to add new features without moving it onto Rojo, feel free to!
+
+If you're making a fork, please follow the licensing terms in license.txt, and please make a fork of roblox.com/library/8741310303 and update the version number to the version your plugin is on, so your forks don't constantly display an update notification.
