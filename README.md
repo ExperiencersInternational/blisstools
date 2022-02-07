@@ -14,7 +14,7 @@ When downloading from Roblox, ignore this following guide, but if you are downlo
 
 ## Open-source licenses
 
-Decal2Image: https://github.com/r1a9c8c4/decal2image
+Decal2Image (versions newer than 0.03.0 no longer use this): https://github.com/r1a9c8c4/decal2image
 
 ## Making contributions
 
