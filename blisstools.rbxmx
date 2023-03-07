@@ -14,16 +14,18 @@
 				<bool name="Disabled">false</bool>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">MainScript</string>
+				<token name="RunContext">0</token>
 				<string name="ScriptGuid">{214BE580-4D0D-4AEB-A591-4522CEB3123E}</string>
 				<ProtectedString name="Source"><![CDATA[--[[
 blisstools by @GamersInternational
 
-A small project to help level up your game. Last updated 6/2/2022.
+A small project to help level up your game. Last updated 7/3/2023.
 This plugin is made possible by many contributors, check them out in the plugins settings page.
-]]
 
+Plugin now discontinued.
+]]
 local toolbar = plugin:CreateToolbar("blisstools (" .. script.Parent.Version.Value .. ")") -- Creates toolbar with name specified in brackets
-local ToolbarButton = toolbar:CreateButton ("Open Menu", "Opens blisstools main menu", "rbxassetid://8044515585") -- [Buttons name, Buttons description, Buttons Image ID]
+local ToolbarButton = toolbar:CreateButton ("Open Menu", "Opens blisstools main menu", "rbxassetid://12708977316") -- [Buttons name, Buttons description, Buttons Image ID]
 local Plugin = plugin:CreateDockWidgetPluginGui(
 	"blisstools",
 	DockWidgetPluginGuiInfo.new(
@@ -56,7 +58,19 @@ BaseGui.Parent = Plugin
 
 BaseGui.Help.LearnMoreUpdatePlugin.Activated:Connect(function()
 	plugin:OpenWikiPage("articles/Intro-to-Plugins#finding-and-managing-plugins")
-end)]]></ProtectedString>
+end)
+
+local defaultkey = "DefaultTool"
+local defaultsetting = plugin:GetSetting(defaultkey)
+
+script.Parent.DefaultTool.Value = defaultsetting
+
+if defaultsetting == "0" then
+	BaseGui.Home["Day/Night Cycle"].Visible = true
+elseif defaultsetting == "1" then
+	BaseGui.Home["Day/Night Cycle"].Visible = false
+	BaseGui.Home.TextureApplier.Visible = true
+end]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
@@ -67,7 +81,7 @@ end)]]></ProtectedString>
 				<string name="Name">Version</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<string name="Value">v0.04.0</string>
+				<string name="Value">v0.04.2</string>
 			</Properties>
 		</Item>
 		<Item class="StringValue" referent="RBXB14535E8F00D4FB39A93A85F05552608">
@@ -76,7 +90,16 @@ end)]]></ProtectedString>
 				<string name="Name">Build</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<string name="Value">45</string>
+				<string name="Value">52</string>
+			</Properties>
+		</Item>
+		<Item class="StringValue" referent="RBXCBDC5FB7A2CE4E69BAFD974E15398B09">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">DefaultTool</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<string name="Value"></string>
 			</Properties>
 		</Item>
 		<Item class="Frame" referent="RBX2527C6485600484C929419253D562117">
@@ -119,7 +142,13 @@ end)]]></ProtectedString>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<float name="Rotation">0</float>
 				<bool name="Selectable">false</bool>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
 				<Ref name="SelectionImageObject">null</Ref>
+				<int name="SelectionOrder">0</int>
 				<UDim2 name="Size">
 					<XS>1</XS>
 					<XO>0</XO>
@@ -173,7 +202,13 @@ end)]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -212,7 +247,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">18</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>500</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -231,7 +271,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.631293952</XS>
 							<XO>0</XO>
@@ -289,7 +335,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">17</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>400</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -308,7 +359,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.935615003</XS>
 							<XO>0</XO>
@@ -367,7 +424,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">18</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>500</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -388,7 +450,13 @@ end)]]></ProtectedString>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.255856335</XS>
 							<XO>0</XO>
@@ -483,7 +551,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">20</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>900</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -502,7 +575,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.386996895</XS>
 							<XO>0</XO>
@@ -576,7 +655,13 @@ end)]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -615,7 +700,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">20</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>900</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -634,7 +724,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.386996895</XS>
 							<XO>0</XO>
@@ -707,7 +803,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -773,7 +875,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -824,7 +932,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">19</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>700</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -843,7 +956,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.938365757</XS>
 									<XO>0</XO>
@@ -901,7 +1020,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -920,7 +1044,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.938365757</XS>
 									<XO>0</XO>
@@ -1010,7 +1140,13 @@ end)]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<token name="ScaleType">3</token>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.119303763</XS>
 									<XO>0</XO>
@@ -1072,7 +1208,8 @@ end)]]></ProtectedString>
 							<bool name="Disabled">false</bool>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
-							<string name="ScriptGuid">{63010794-630C-4215-BA94-DE7EB828FA88}</string>
+							<token name="RunContext">0</token>
+							<string name="ScriptGuid">{769AA333-E5B5-4C90-8C55-264A8247816F}</string>
 							<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
 local SS = game:GetService('StudioService')
@@ -1080,14 +1217,14 @@ local userId = SS:GetUserId()
 local mkplace = game:GetService("MarketplaceService")
 local home = script.Parent.Parent
 
-if mkplace:UserOwnsGamePassAsync(userId, 28338464) then
+-- if mkplace:UserOwnsGamePassAsync(userId, 28338464) then
 	script.Parent.Visible = false
 	home["Day/Night Cycle"].Position = UDim2.new(0.023, 0,0.153, 0)
 	home.ShiftToSprint.Position = UDim2.new(0.023, 0,0.153, 0)
 	home.TextureApplier.Position = UDim2.new(0.023, 0,0.153, 0)
 	home.InsertModelFromID.Position = UDim2.new(0.023, 0,0.153, 0)
 	home.TeleportSystemCreator.Position = UDim2.new(0.023, 0,0.153, 0)
-else
+--[[else
 	return
 end
 
@@ -1098,7 +1235,7 @@ while true do
 	script.Parent.RFDBC.Visible = false
 	script.Parent.WhatsNew.Visible = true
 	task.wait(10)
-end]]></ProtectedString>
+end]]]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
 						</Properties>
@@ -1143,7 +1280,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>1</XS>
 								<XO>0</XO>
@@ -1194,7 +1337,12 @@ end]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">19</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>700</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -1213,7 +1361,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.938365757</XS>
 									<XO>0</XO>
@@ -1271,7 +1425,12 @@ end]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -1290,7 +1449,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.938365757</XS>
 									<XO>0</XO>
@@ -1300,7 +1465,7 @@ end]]></ProtectedString>
 								<token name="SizeConstraint">0</token>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<string name="Text">We&apos;ve just added a brand new tool, a teleport system creator. More updates coming soon!</string>
+								<string name="Text">We&apos;ve refreshed some of our icons, and made some tools even better!</string>
 								<Color3 name="TextColor3">
 									<R>1</R>
 									<G>1</G>
@@ -1380,7 +1545,13 @@ end]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<token name="ScaleType">3</token>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.119303763</XS>
 									<XO>0</XO>
@@ -1477,7 +1648,13 @@ end]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -1560,7 +1737,13 @@ end]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0811688304</XS>
 								<XO>0</XO>
@@ -1616,7 +1799,12 @@ end]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -1635,7 +1823,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.753206193</XS>
 								<XO>0</XO>
@@ -1732,7 +1926,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -1771,7 +1971,12 @@ end]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -1790,7 +1995,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
 									<XO>0</XO>
@@ -1873,7 +2084,12 @@ end]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -1899,7 +2115,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
@@ -2011,7 +2233,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -2050,7 +2278,12 @@ end]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -2069,7 +2302,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -2152,7 +2391,12 @@ end]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -2178,7 +2422,13 @@ end]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.958999991</XS>
@@ -2276,7 +2526,12 @@ end]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -2297,7 +2552,13 @@ end]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -2372,7 +2633,8 @@ end]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{B69A3918-DEAE-4340-B073-FED55ABE59A6}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{841AADD0-3455-4976-8DA9-571354A89B62}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local assetID = rt.AssetID
@@ -2380,6 +2642,11 @@ end]]></ProtectedString>
 	local chs = game:GetService("ChangeHistoryService")
 	
 	if assetID.TextBox.Text == "" then
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools encountered an error. Please view the output for more details (this can be accessed by pressing View > Output at the top of your screen).", "5")
+		else
+
+		end
 		error([[blisstools encountered an error (005).
 		
 		Try making sure there is an asset ID in both TextBoxes.
@@ -2393,6 +2660,11 @@ end]]></ProtectedString>
 		chs:SetWaypoint("blisstools pre-asset inserted")
 		game:GetObjects('rbxassetid://' .. assetID.TextBox.Text)[1].Parent = game.Workspace
 		print("blisstools successfully inserted asset ID " .. assetID.TextBox.Text .. " into " .. location.TextBox.Text .. ".")
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools successfully inserted an asset into " .. location.TextBox.Text .. ".", "5")
+		else
+
+		end
 		chs:SetWaypoint("blisstools asset inserted")
 	end
 end)]]></ProtectedString>
@@ -2428,7 +2700,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">18</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>500</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -2449,7 +2726,13 @@ end)]]></ProtectedString>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
 						<bool name="Selected">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.386996955</XS>
 							<XO>0</XO>
@@ -2488,7 +2771,8 @@ end)]]></ProtectedString>
 							<bool name="Disabled">false</bool>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
-							<string name="ScriptGuid">{DBA476DD-98CD-41F2-BD2F-2C51A9F46DE2}</string>
+							<token name="RunContext">0</token>
+							<string name="ScriptGuid">{1A3E7866-CD87-4242-842B-26A475522D25}</string>
 							<ProtectedString name="Source"><![CDATA[local home = script.Parent.Parent
 
 script.Parent.MouseButton1Click:Connect(function()
@@ -2510,6 +2794,7 @@ local function ChangeViewText()
 	end
 end
 
+task.wait(2)
 ChangeViewText()
 home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
@@ -2593,7 +2878,13 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -2671,7 +2962,13 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 							<token name="ScrollingDirection">4</token>
 							<bool name="ScrollingEnabled">true</bool>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">true</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.853350043</XS>
 								<XO>0</XO>
@@ -2741,7 +3038,12 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -2762,7 +3064,13 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -2825,7 +3133,8 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{FEEB9BA7-7420-4C54-8D2B-43BC1E897CA6}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{7E4998F8-DA44-4F7B-AE5F-55F7992B1CFF}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -2870,7 +3179,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -2891,7 +3205,13 @@ end)]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -2954,7 +3274,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{6E6975CA-6D81-4323-BA1D-869FB300E240}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{A1D02489-A37A-4CCA-9C9B-8A2C03533F4B}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -2999,7 +3320,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -3020,7 +3346,13 @@ end)]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -3083,7 +3415,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{00DD9F02-B152-419E-94E4-D0547A373006}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{6821A5BF-1B62-424F-99F8-1F08DAC3B359}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3128,7 +3461,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -3149,7 +3487,13 @@ end)]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -3212,7 +3556,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{9D623E12-CC42-4EC2-BC07-A4AE3CA94784}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{FA0DC6F4-FF0A-4DD7-982D-49B33BB03095}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3257,7 +3602,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -3278,7 +3628,13 @@ end)]]></ProtectedString>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -3341,7 +3697,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{126C43F4-2197-494B-BBE5-361E36A71037}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{D2E431E5-3A1C-4DBC-9094-E8D82AD2BBC3}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3402,7 +3759,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -3485,7 +3848,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0811688304</XS>
 								<XO>0</XO>
@@ -3541,7 +3910,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -3560,7 +3934,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.753206193</XS>
 								<XO>0</XO>
@@ -3657,7 +4037,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -3696,7 +4082,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -3715,7 +4106,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
 									<XO>0</XO>
@@ -3798,7 +4195,12 @@ end)]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -3824,7 +4226,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
@@ -3922,7 +4330,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -3943,7 +4356,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -4018,7 +4437,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{5559A18A-4D46-4692-B91A-3B69B1993F44}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{578D7150-3913-4265-BCDA-C3C5DF033DBA}</string>
 								<ProtectedString name="Source"><![CDATA[local ChangeHistoryService = game:GetService("ChangeHistoryService")
 local MarketplaceService = game:GetService("MarketplaceService")
 local Selection = game:GetService("Selection")
@@ -4100,6 +4520,11 @@ script.Parent.Activated:Connect(function()
 	local selection = Selection:Get()
 
 	if #selection == 0 then
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools encountered an error. Please view the output for more details (this can be accessed by pressing View > Output at the top of your screen).", "5")
+		else
+
+		end
 		warn(MESSAGES.NO_SELECTION)
 		return
 	end
@@ -4115,7 +4540,11 @@ script.Parent.Activated:Connect(function()
 	end
 
 	print(MESSAGES.SUCCESS)
+	if game.PluginGuiService:FindFirstChild("AlertService") then
+		require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools has successfully applied textures to the parts selected. Thanks to @csqrl for revamping our texture applier system.", "5")
+	else
 
+	end
 	ChangeHistoryService:SetWaypoint("blisstools textures applied")
 end)]]></ProtectedString>
 								<int64 name="SourceAssetId">-1</int64>
@@ -4149,7 +4578,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -4170,7 +4604,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -4245,7 +4685,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{16254221-6BDE-4399-BFCB-E69BCC2F05CD}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{3B7D9F6E-4050-4DC2-8E09-628B363EBBA5}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent
 	root.Home.Visible = false
@@ -4300,7 +4741,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -4383,7 +4830,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0811688304</XS>
 								<XO>0</XO>
@@ -4439,7 +4892,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -4458,7 +4916,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.753206193</XS>
 								<XO>0</XO>
@@ -4555,7 +5019,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -4594,7 +5064,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -4613,7 +5088,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
 									<XO>0</XO>
@@ -4696,7 +5177,12 @@ end)]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -4722,7 +5208,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
@@ -4820,7 +5312,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -4841,7 +5338,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -4916,7 +5419,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">ShiftScript</string>
-								<string name="ScriptGuid">{3569FA34-D120-4C8B-915E-63564CA6D689}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{4E7B1D33-33C3-4848-B6CD-02BB7B964F83}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local ws = rt.Walkspeed
@@ -4924,6 +5428,11 @@ end)]]></ProtectedString>
 	
 	if ws.TextBox.Text == "" then
 		warn("blisstools found that no text was inserted into the walkspeed textbox, so we have automatically set it to 30.")
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=12708977316", "blisstools has set the walkspeed to 30, since none was provided.", "5")
+		else
+
+		end
 		ws.TextBox.Text = "30"
 	end
 	local scs = game.StarterPlayer.StarterCharacterScripts
@@ -4934,6 +5443,11 @@ end)]]></ProtectedString>
 	shifttosprint.Parent = scs
 	shifttosprint.Name = "ShiftToSprint"
 	print("blisstools successfully created a shift to sprint script.")
+	if game.PluginGuiService:FindFirstChild("AlertService") then
+		require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=12708977316", "blisstools successfully created a shift to sprint script in game.StarterPlayer.StarterCharacterScripts.", "5")
+	else
+
+	end
 	chs:SetWaypoint("blisstools shift to sprint creation")
 end)]]></ProtectedString>
 								<int64 name="SourceAssetId">-1</int64>
@@ -4945,7 +5459,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">true</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Action</string>
-									<string name="ScriptGuid">{437A6ABE-E72D-4341-9B44-C9619D59EA96}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{AF76B188-F1ED-4339-861A-98B8F5AAF346}</string>
 									<ProtectedString name="Source"><![CDATA[-- Thanks to luisgamercooI231fan for submitting these changes
 local TabletJumpbuttonYoffset = 2.55 -- the mobile button offset on the Y axis(up) for tablets
 local PhoneJumpButtonoffset = 75 --the mobile button offset on the Y axis(up) for phones
@@ -5063,7 +5578,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -5146,7 +5667,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0811688304</XS>
 								<XO>0</XO>
@@ -5202,7 +5729,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -5221,7 +5753,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.753206193</XS>
 								<XO>0</XO>
@@ -5318,7 +5856,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -5357,7 +5901,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -5376,7 +5925,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.959415495</XS>
 									<XO>0</XO>
@@ -5460,7 +6015,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -5481,7 +6041,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -5556,7 +6122,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{DF51B6CD-5472-4F33-B8A2-4E66C6627108}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{7272797B-1F4B-4CB1-A4C7-AE103923946A}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local chs = game:GetService("ChangeHistoryService")
@@ -5657,7 +6224,12 @@ end)]]></ProtectedString>
 	end
 	
 	if #selectedObjects == 0 then
-		error("blisstools encountered an error. Error code 005.")
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools encountered an error. Please view the output for more details (this can be accessed by pressing View > Output at the top of your screen).", "5")
+		else
+
+		end
+		error("blisstools encountered an error (005). No objects are selected.")
 		return
 	else
 		if game.StarterGui:FindFirstChild("blisstools") then
@@ -5716,6 +6288,13 @@ end)]]></ProtectedString>
 				script.Parent.Parent.Parent.Visible = false
 			end)
 			]]
+			
+			part:SetAttribute("GroupMe_Ignore", true)
+		end
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools has created/updated a teleport system.", "5") -- useless until I fix AlertService
+		else
+
 		end
 		chs:SetWaypoint("process completed")
 	end
@@ -5766,7 +6345,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953560352</XS>
 							<XO>0</XO>
@@ -5849,7 +6434,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0811688304</XS>
 								<XO>0</XO>
@@ -5905,7 +6496,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -5924,7 +6520,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.753206193</XS>
 								<XO>0</XO>
@@ -6021,7 +6623,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -6060,7 +6668,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6079,7 +6692,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
 									<XO>0</XO>
@@ -6162,7 +6781,12 @@ end)]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6188,7 +6812,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.959415555</XS>
@@ -6300,7 +6930,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.5</XS>
 								<XO>0</XO>
@@ -6339,7 +6975,12 @@ end)]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">18</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6358,7 +6999,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -6441,7 +7088,12 @@ end)]]></ProtectedString>
 								<bool name="ClearTextOnFocus">true</bool>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<token name="Font">17</token>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>400</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+								</Font>
 								<int name="LayoutOrder">0</int>
 								<float name="LineHeight">1</float>
 								<int name="MaxVisibleGraphemes">-1</int>
@@ -6467,7 +7119,13 @@ end)]]></ProtectedString>
 								<Ref name="RootLocalizationTable">null</Ref>
 								<float name="Rotation">0</float>
 								<bool name="Selectable">true</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<bool name="ShowNativeInput">true</bool>
 								<UDim2 name="Size">
 									<XS>0.958999991</XS>
@@ -6565,7 +7223,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -6586,7 +7249,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.392045498</XS>
 								<XO>0</XO>
@@ -6661,7 +7330,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{328614A5-CCA4-405D-901A-4FF5186D7822}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{6FBD5192-5058-4B05-A90E-B551B74844A6}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local st = rt.StartTime
@@ -6669,18 +7339,33 @@ end)]]></ProtectedString>
 	local chs = game:GetService("ChangeHistoryService")
 	
 	if st.TextBox.Text == "" then
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools encountered an error. Please view the output for more details (this can be accessed by pressing View > Output at the top of your screen).", "5")
+		else
+
+		end
 		error([[blisstools encountered an error (001).
 		
 		Try making sure there is integer values in both textboxes.
 		
 		If this issue is still occuring, contact GamersInternational on the Roblox DevForum.]])
 	elseif samt.TextBox.Text == "" then
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools encountered an error. Please view the output for more details (this can be accessed by pressing View > Output at the top of your screen).", "5")
+		else
+
+		end
 		error([[blisstools encountered an error (001).
 		
 		Try making sure there is integer values in both textboxes.
 		
 		If this issue is still occuring, contact GamersInternational on the Roblox DevForum.]])
 	elseif game.ServerScriptService:FindFirstChild("DayAndNightScript") then
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools was unable to make a Day/Night script due to one already existing. Please try deleting it before creating a new one.", "5")
+		else
+
+		end
 			warn([[blisstools encountered an error (002).
 		
 		It looks like you've already created a day and night script using blisstools. Try deleting the script before creating a new one.
@@ -6698,6 +7383,11 @@ end)]]></ProtectedString>
 			'task.wait(' .. rt.SecondsAMinTakes.TextBox.Text .. ') \n' ..
 			'end'
 		print("blisstools successfully completed the creation of a day and night script in game.ServerScriptService.")
+		if game.PluginGuiService:FindFirstChild("AlertService") then
+			require(game.PluginGuiService.AlertService.DockWidgetGUI.Module.MainModule).Send("blisstools", "http://www.roblox.com/asset/?id=8044515585", "blisstools successfully created a day and night script in game.ServerScriptService.", "5")
+		else
+
+		end
 		chs:SetWaypoint("blisstools day/night script creation")
 	end
 end)]]></ProtectedString>
@@ -6748,7 +7438,13 @@ end)]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -6787,7 +7483,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">19</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>700</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Bold.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -6806,7 +7507,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.159026131</XS>
 							<XO>0</XO>
@@ -6865,7 +7572,12 @@ end)]]></ProtectedString>
 						<bool name="ClearTextOnFocus">false</bool>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">18</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>500</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -6891,7 +7603,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">true</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<bool name="ShowNativeInput">true</bool>
 						<UDim2 name="Size">
 							<XS>0.617417455</XS>
@@ -6988,7 +7706,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953999996</XS>
 							<XO>0</XO>
@@ -7071,7 +7795,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0593086295</XS>
 								<XO>0</XO>
@@ -7151,7 +7881,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -7170,7 +7905,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.871129215</XS>
 								<XO>0</XO>
@@ -7265,7 +8006,13 @@ end)]]></ProtectedString>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0831062272</XS>
 								<XO>0</XO>
@@ -7302,7 +8049,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{977F21AE-C0D0-4C2F-9AA2-0FBF4AAF1508}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{9FD44738-7030-43DB-BA61-CFF6D0880453}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -7343,7 +8091,12 @@ end)]]></ProtectedString>
 						<int name="BorderSizePixel">1</int>
 						<bool name="ClipsDescendants">false</bool>
 						<bool name="Draggable">false</bool>
-						<token name="Font">20</token>
+						<Font name="FontFace">
+							<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+							<Weight>900</Weight>
+							<Style>Normal</Style>
+							<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+						</Font>
 						<int name="LayoutOrder">0</int>
 						<float name="LineHeight">1</float>
 						<int name="MaxVisibleGraphemes">-1</int>
@@ -7362,7 +8115,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.952401519</XS>
 							<XO>0</XO>
@@ -7435,7 +8194,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953999996</XS>
 							<XO>0</XO>
@@ -7518,7 +8283,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0593086295</XS>
 								<XO>0</XO>
@@ -7598,7 +8369,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -7617,7 +8393,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.871129215</XS>
 								<XO>0</XO>
@@ -7712,7 +8494,13 @@ end)]]></ProtectedString>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0831062272</XS>
 								<XO>0</XO>
@@ -7749,7 +8537,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{647A464C-1849-43CE-B606-49F940425C7D}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{7AB1AEDB-DE7B-4CD9-BB0B-02B2B8CDD5D8}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -7805,7 +8594,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.953999996</XS>
 							<XO>0</XO>
@@ -7888,7 +8683,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0593086295</XS>
 								<XO>0</XO>
@@ -7968,7 +8769,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -7987,7 +8793,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.871129215</XS>
 								<XO>0</XO>
@@ -8082,7 +8894,13 @@ end)]]></ProtectedString>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0831062272</XS>
 								<XO>0</XO>
@@ -8119,7 +8937,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{EE8530E2-120A-47E5-9C77-7766EEE59E78}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{F0A430BE-BB37-404C-B0CB-C09B2749E3EB}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -8135,144 +8954,405 @@ end)]]></ProtectedString>
 						</Item>
 					</Item>
 				</Item>
-			</Item>
-			<Item class="TextLabel" referent="RBX78079118839A4E05AF2040A84F17C9F2">
-				<Properties>
-					<bool name="Active">false</bool>
-					<Vector2 name="AnchorPoint">
-						<X>0</X>
-						<Y>0</Y>
-					</Vector2>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<bool name="AutoLocalize">true</bool>
-					<token name="AutomaticSize">0</token>
-					<Color3 name="BackgroundColor3">
-						<R>0.137254909</R>
-						<G>0.137254909</G>
-						<B>0.137254909</B>
-					</Color3>
-					<float name="BackgroundTransparency">0</float>
-					<Color3 name="BorderColor3">
-						<R>0.105882362</R>
-						<G>0.164705887</G>
-						<B>0.207843155</B>
-					</Color3>
-					<token name="BorderMode">0</token>
-					<int name="BorderSizePixel">0</int>
-					<bool name="ClipsDescendants">false</bool>
-					<bool name="Draggable">false</bool>
-					<token name="Font">18</token>
-					<int name="LayoutOrder">0</int>
-					<float name="LineHeight">1</float>
-					<int name="MaxVisibleGraphemes">-1</int>
-					<string name="Name">NotificationFrame</string>
-					<Ref name="NextSelectionDown">null</Ref>
-					<Ref name="NextSelectionLeft">null</Ref>
-					<Ref name="NextSelectionRight">null</Ref>
-					<Ref name="NextSelectionUp">null</Ref>
-					<UDim2 name="Position">
-						<XS>0</XS>
-						<XO>0</XO>
-						<YS>0.839999974</YS>
-						<YO>0</YO>
-					</UDim2>
-					<bool name="RichText">false</bool>
-					<Ref name="RootLocalizationTable">null</Ref>
-					<float name="Rotation">0</float>
-					<bool name="Selectable">false</bool>
-					<Ref name="SelectionImageObject">null</Ref>
-					<UDim2 name="Size">
-						<XS>1</XS>
-						<XO>0</XO>
-						<YS>0.0399999991</YS>
-						<YO>0</YO>
-					</UDim2>
-					<token name="SizeConstraint">0</token>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<string name="Text">A new update is available to download from the Plugin Marketplace.</string>
-					<Color3 name="TextColor3">
-						<R>1</R>
-						<G>1</G>
-						<B>1</B>
-					</Color3>
-					<bool name="TextScaled">true</bool>
-					<float name="TextSize">14</float>
-					<Color3 name="TextStrokeColor3">
-						<R>1</R>
-						<G>1</G>
-						<B>1</B>
-					</Color3>
-					<float name="TextStrokeTransparency">1</float>
-					<float name="TextTransparency">0</float>
-					<token name="TextTruncate">0</token>
-					<bool name="TextWrapped">true</bool>
-					<token name="TextXAlignment">0</token>
-					<token name="TextYAlignment">1</token>
-					<bool name="Visible">false</bool>
-					<int name="ZIndex">1</int>
-				</Properties>
-				<Item class="UIPadding" referent="RBX1ABE154EDEBF4D72B0BCCA2A7D543BDD">
+				<Item class="Frame" referent="RBXED27288934684D669ECE3E58054BC51A">
 					<Properties>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
 						<BinaryString name="AttributesSerialize"></BinaryString>
-						<string name="Name">UIPadding</string>
-						<UDim name="PaddingBottom">
-							<S>0</S>
-							<O>3</O>
-						</UDim>
-						<UDim name="PaddingLeft">
-							<S>0</S>
-							<O>8</O>
-						</UDim>
-						<UDim name="PaddingRight">
-							<S>0</S>
-							<O>8</O>
-						</UDim>
-						<UDim name="PaddingTop">
-							<S>0</S>
-							<O>3</O>
-						</UDim>
+						<bool name="AutoLocalize">true</bool>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>0.215686277</R>
+							<G>0.215686277</G>
+							<B>0.215686277</B>
+						</Color3>
+						<float name="BackgroundTransparency">0</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<int name="LayoutOrder">0</int>
+						<string name="Name">DefaultTool</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.0230000112</XS>
+							<XO>0</XO>
+							<YS>0.553013146</YS>
+							<YO>0</YO>
+						</UDim2>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<UDim2 name="Size">
+							<XS>0.953999996</XS>
+							<XO>0</XO>
+							<YS>0.115147457</YS>
+							<YO>0</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
 						<int64 name="SourceAssetId">-1</int64>
+						<token name="Style">0</token>
 						<BinaryString name="Tags"></BinaryString>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
 					</Properties>
-				</Item>
-				<Item class="Script" referent="RBXCE43969CE6774533A3C37ED39E1196E6">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<bool name="Disabled">false</bool>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">Script</string>
-						<string name="ScriptGuid">{76E352A6-5519-4D66-A8FF-5D4B3040C52E}</string>
-						<ProtectedString name="Source"><![CDATA[local chs = game:GetService("ChangeHistoryService")
-chs:SetWaypoint("blisstools pre-update check")
-local ver = script.Parent.Parent.Parent.Version
-
-local function checkforupdates(temp)
-	local pluginversionmodule = require(8741310303)
-	pluginversionmodule.Parent = temp
-	task.wait(2)
-
-	if pluginversionmodule.blisstools == ver.Value then
-		return
-	else
-		script.Parent.Visible = true
-		print("An update is available for blisstools. Install it by going into Plugins > Manage Plugins and click the update button next to blisstools.")
-	end
-	chs:SetWaypoint("blisstools update check")
-end
-
-if game.ServerStorage:FindFirstChild("blisstoolsTEMP") then
-	local btTemp = game.ServerStorage.blisstoolsTEMP
-	checkforupdates(btTemp)
-else
-	local btTemp = Instance.new("Folder")
-	btTemp.Parent = game.ServerStorage
-	btTemp.Name = "blisstoolsTEMP"
-	checkforupdates(btTemp)
-end]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-					</Properties>
+					<Item class="UICorner" referent="RBX08B30CD94DC64C698DA6C9EC9971D3E1">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<UDim name="CornerRadius">
+								<S>0</S>
+								<O>10</O>
+							</UDim>
+							<string name="Name">UICorner</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+						</Properties>
+					</Item>
+					<Item class="ImageLabel" referent="RBX93166A66876F471CB156C3BC305153B6">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=6031302961</url></Content>
+							<Color3 name="ImageColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<Vector2 name="ImageRectOffset">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<Vector2 name="ImageRectSize">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<float name="ImageTransparency">0</float>
+							<int name="LayoutOrder">0</int>
+							<string name="Name">ImageLabel</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>-3.49156037e-09</XS>
+								<XO>0</XO>
+								<YS>0</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="ResampleMode">0</token>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<token name="ScaleType">3</token>
+							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.0593086295</XS>
+								<XO>0</XO>
+								<YS>0.985245347</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<Rect2D name="SliceCenter">
+								<min>
+									<X>0</X>
+									<Y>0</Y>
+								</min>
+								<max>
+									<X>0</X>
+									<Y>0</Y>
+								</max>
+							</Rect2D>
+							<float name="SliceScale">1</float>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UDim2 name="TileSize">
+								<XS>1</XS>
+								<XO>0</XO>
+								<YS>1</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+					</Item>
+					<Item class="UIPadding" referent="RBX4B3928389B294400A216BDDCFD283855">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<string name="Name">UIPadding</string>
+							<UDim name="PaddingBottom">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<UDim name="PaddingLeft">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<UDim name="PaddingRight">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<UDim name="PaddingTop">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+						</Properties>
+					</Item>
+					<Item class="TextLabel" referent="RBX12427AD8277F41C9997098926115AB1F">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
+							<int name="LayoutOrder">0</int>
+							<float name="LineHeight">1</float>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="Name">TextLabel</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.0593086518</XS>
+								<XO>0</XO>
+								<YS>0.0235479064</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="RichText">false</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.871129215</XS>
+								<XO>0</XO>
+								<YS>0.918377221</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<string name="Text">Default tool (beta)</string>
+							<Color3 name="TextColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<bool name="TextScaled">true</bool>
+							<float name="TextSize">14</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">true</bool>
+							<token name="TextXAlignment">0</token>
+							<token name="TextYAlignment">1</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+					</Item>
+					<Item class="ImageButton" referent="RBXC1381AFFC25241DA946E5C3EFCAAC989">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoButtonColor">true</bool>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Content name="HoverImage"><null></null></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=6031094680</url></Content>
+							<Color3 name="ImageColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<Vector2 name="ImageRectOffset">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<Vector2 name="ImageRectSize">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<float name="ImageTransparency">0</float>
+							<int name="LayoutOrder">0</int>
+							<bool name="Modal">false</bool>
+							<string name="Name">Next</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.91077888</XS>
+								<XO>0</XO>
+								<YS>-0.0951992646</YS>
+								<YO>0</YO>
+							</UDim2>
+							<Content name="PressedImage"><null></null></Content>
+							<token name="ResampleMode">0</token>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<token name="ScaleType">3</token>
+							<bool name="Selectable">false</bool>
+							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.0831062272</XS>
+								<XO>0</XO>
+								<YS>1.19151044</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<Rect2D name="SliceCenter">
+								<min>
+									<X>0</X>
+									<Y>0</Y>
+								</min>
+								<max>
+									<X>0</X>
+									<Y>0</Y>
+								</max>
+							</Rect2D>
+							<float name="SliceScale">1</float>
+							<int64 name="SourceAssetId">-1</int64>
+							<token name="Style">0</token>
+							<BinaryString name="Tags"></BinaryString>
+							<UDim2 name="TileSize">
+								<XS>1</XS>
+								<XO>0</XO>
+								<YS>1</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+						<Item class="Script" referent="RBXF00827DFFDC242388756AC14F9EEDC16">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="Disabled">false</bool>
+								<Content name="LinkedSource"><null></null></Content>
+								<string name="Name">Script</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{1018F58D-A468-4C7C-AEE5-B40338485E7D}</string>
+								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
+	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
+	local root = submenus.Parent
+	submenus.Visible = true
+	submenus.DefaultTool.Visible = true
+	root.About.Visible = false
+	root.Menu.Visible = false
+	root.NotificationFrame.Position = UDim2.new(0, 0,0.96, 0)
+end)]]></ProtectedString>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+							</Properties>
+						</Item>
+					</Item>
 				</Item>
 			</Item>
 			<Item class="Frame" referent="RBX4346846DDED946CE8BB2A4D2E19B52E5">
@@ -8315,7 +9395,13 @@ end]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -8369,7 +9455,13 @@ end]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -8408,7 +9500,12 @@ end]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">20</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>900</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -8427,7 +9524,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.877172291</XS>
 								<XO>0</XO>
@@ -8522,7 +9625,13 @@ end]]></ProtectedString>
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0700000003</XS>
 								<XO>0</XO>
@@ -8570,7 +9679,8 @@ end]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{1CD47236-E47C-428A-B4A6-A8C0A2FD9CEF}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{7D8DEE5D-50EC-4662-8700-698239456643}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -8621,7 +9731,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -8640,7 +9755,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953262091</XS>
 								<XO>0</XO>
@@ -8650,7 +9771,7 @@ end)]]></ProtectedString>
 							<token name="SizeConstraint">0</token>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<string name="Text">Click on a texture, and its ID will automatically be pasted onto the texture applier page. Provided by @awesomerobloxer7.</string>
+							<string name="Text">Click on a texture, and its ID will automatically be pasted onto the texture applier page. First 5 provided by @awesomerobloxer7.</string>
 							<Color3 name="TextColor3">
 								<R>1</R>
 								<G>1</G>
@@ -8737,7 +9858,13 @@ end)]]></ProtectedString>
 							<token name="ScrollingDirection">4</token>
 							<bool name="ScrollingEnabled">true</bool>
 							<bool name="Selectable">true</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">true</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953246117</XS>
 								<XO>0</XO>
@@ -8841,7 +9968,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">0</token>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.0902794302</XS>
 									<XO>0</XO>
@@ -8901,7 +10034,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{2590A5D0-9847-481D-9B8B-58277FD5036F}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{F2ABDD09-BBC3-4081-B7C0-EA492D8B0D52}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816208142"
@@ -8986,7 +10120,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">0</token>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.0902794302</XS>
 									<XO>0</XO>
@@ -9046,7 +10186,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{97CF27D8-63FE-4586-9E74-DEAC84842C2B}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{2D2E311E-571E-4830-8429-2BB1BEF7B05A}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816211217"
@@ -9119,7 +10260,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">0</token>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.0902794302</XS>
 									<XO>0</XO>
@@ -9179,7 +10326,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{B2F654C9-65CE-4498-A103-59834C5FE1A1}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{6995F649-F721-4A2D-8481-380208955601}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816210397"
@@ -9252,7 +10400,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">0</token>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.0902794302</XS>
 									<XO>0</XO>
@@ -9312,7 +10466,8 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{117D1C22-7D53-43C8-A099-9BC80D0223E5}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{3B27ECC7-C8F7-4636-A63F-96092E4EA3B5}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816208142"
@@ -9385,7 +10540,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">0</token>
 								<bool name="Selectable">true</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>0.0902794302</XS>
 									<XO>0</XO>
@@ -9445,10 +10606,151 @@ end)]]></ProtectedString>
 									<bool name="Disabled">false</bool>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
-									<string name="ScriptGuid">{1D8329E7-128B-40A6-879C-71D4201D3B39}</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{A37DD0B2-2976-4B1F-BF50-87BA7D2BC364}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816209419"
+	print("blisstools - Texture ID pasted into TextBox inside of the TextureApplier tool.")
+end)]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+						</Item>
+						<Item class="ImageButton" referent="RBXF3F8C64C65CB4DE193702761BB5D09B6">
+							<Properties>
+								<bool name="Active">true</bool>
+								<Vector2 name="AnchorPoint">
+									<X>0</X>
+									<Y>0</Y>
+								</Vector2>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="AutoButtonColor">true</bool>
+								<bool name="AutoLocalize">true</bool>
+								<token name="AutomaticSize">0</token>
+								<Color3 name="BackgroundColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<float name="BackgroundTransparency">0</float>
+								<Color3 name="BorderColor3">
+									<R>0.105882362</R>
+									<G>0.164705887</G>
+									<B>0.207843155</B>
+								</Color3>
+								<token name="BorderMode">0</token>
+								<int name="BorderSizePixel">1</int>
+								<bool name="ClipsDescendants">false</bool>
+								<bool name="Draggable">false</bool>
+								<Content name="HoverImage"><null></null></Content>
+								<Content name="Image"><url>http://www.roblox.com/asset/?id=8852075146</url></Content>
+								<Color3 name="ImageColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<Vector2 name="ImageRectOffset">
+									<X>0</X>
+									<Y>0</Y>
+								</Vector2>
+								<Vector2 name="ImageRectSize">
+									<X>0</X>
+									<Y>0</Y>
+								</Vector2>
+								<float name="ImageTransparency">0</float>
+								<int name="LayoutOrder">0</int>
+								<bool name="Modal">false</bool>
+								<string name="Name">ImageButton</string>
+								<Ref name="NextSelectionDown">null</Ref>
+								<Ref name="NextSelectionLeft">null</Ref>
+								<Ref name="NextSelectionRight">null</Ref>
+								<Ref name="NextSelectionUp">null</Ref>
+								<UDim2 name="Position">
+									<XS>0</XS>
+									<XO>0</XO>
+									<YS>0</YS>
+									<YO>0</YO>
+								</UDim2>
+								<Content name="PressedImage"><null></null></Content>
+								<token name="ResampleMode">0</token>
+								<Ref name="RootLocalizationTable">null</Ref>
+								<float name="Rotation">0</float>
+								<token name="ScaleType">0</token>
+								<bool name="Selectable">true</bool>
+								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
+								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
+								<UDim2 name="Size">
+									<XS>0.0902794302</XS>
+									<XO>0</XO>
+									<YS>0.197636247</YS>
+									<YO>0</YO>
+								</UDim2>
+								<token name="SizeConstraint">0</token>
+								<Rect2D name="SliceCenter">
+									<min>
+										<X>0</X>
+										<Y>0</Y>
+									</min>
+									<max>
+										<X>0</X>
+										<Y>0</Y>
+									</max>
+								</Rect2D>
+								<float name="SliceScale">1</float>
+								<int64 name="SourceAssetId">-1</int64>
+								<token name="Style">0</token>
+								<BinaryString name="Tags"></BinaryString>
+								<UDim2 name="TileSize">
+									<XS>1</XS>
+									<XO>0</XO>
+									<YS>1</YS>
+									<YO>0</YO>
+								</UDim2>
+								<bool name="Visible">true</bool>
+								<int name="ZIndex">1</int>
+							</Properties>
+							<Item class="UICorner" referent="RBX3B94015223BB437BB7DDD434B823A077">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<UDim name="CornerRadius">
+										<S>0</S>
+										<O>10</O>
+									</UDim>
+									<string name="Name">UICorner</string>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+							<Item class="UIAspectRatioConstraint" referent="RBXE58ECA11C03F42D0846F52A79987490D">
+								<Properties>
+									<float name="AspectRatio">1</float>
+									<token name="AspectType">0</token>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<token name="DominantAxis">0</token>
+									<string name="Name">UIAspectRatioConstraint</string>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+							<Item class="Script" referent="RBX0F774D6CA52C43E6815CDB96C52DCAC7">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="Disabled">false</bool>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Script</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{F6C332B9-87A1-4C63-94A4-54001DB303FA}</string>
+									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
+	local root = script.Parent.Parent.Parent.Parent.Parent
+	root.Home.TextureApplier.TextureToApply.TextBox.Text = "8852075154"
 	print("blisstools - Texture ID pasted into TextBox inside of the TextureApplier tool.")
 end)]]></ProtectedString>
 									<int64 name="SourceAssetId">-1</int64>
@@ -9498,7 +10800,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -9537,7 +10845,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">20</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>900</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -9556,7 +10869,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.877172291</XS>
 								<XO>0</XO>
@@ -9651,7 +10970,13 @@ end)]]></ProtectedString>
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0700000003</XS>
 								<XO>0</XO>
@@ -9699,7 +11024,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{41E57A75-C743-41D7-ADB4-B3BA539934F4}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{AF81EBE2-AE87-491C-813F-2BE38D733F16}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -9750,7 +11076,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -9769,7 +11100,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953262091</XS>
 								<XO>0</XO>
@@ -9827,7 +11164,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">17</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -9846,7 +11188,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.954106688</XS>
 								<XO>0</XO>
@@ -9884,7 +11232,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{CB688650-8912-40FF-826D-79B3AB95D345}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{6B536B87-71FB-46B1-B86E-072364FEEA1D}</string>
 								<ProtectedString name="Source"><![CDATA[local p = script.Parent
 
 p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></ProtectedString>
@@ -9918,7 +11267,12 @@ p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></Protecte
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">17</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Book.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -9937,7 +11291,13 @@ p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></Protecte
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953962266</XS>
 								<XO>0</XO>
@@ -9975,7 +11335,8 @@ p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></Protecte
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{49B42726-2462-4A39-8609-46EA8D11DFE3}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{8BBF282E-FAE7-4FF1-9834-BABB7965DF34}</string>
 								<ProtectedString name="Source"><![CDATA[local p = script.Parent
 
 p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedString>
@@ -10009,7 +11370,7 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>rbxassetid://8044515585</url></Content>
+							<Content name="Image"><url>rbxassetid://12708977316</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -10041,7 +11402,13 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 							<float name="Rotation">0</float>
 							<token name="ScaleType">3</token>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.229776248</XS>
 								<XO>0</XO>
@@ -10124,7 +11491,13 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -10163,7 +11536,12 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">20</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>900</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -10182,7 +11560,13 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.877172291</XS>
 								<XO>0</XO>
@@ -10277,7 +11661,13 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0700000003</XS>
 								<XO>0</XO>
@@ -10325,7 +11715,8 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{3A887FE0-5017-479B-9637-F3AE55F92738}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{8BA496D9-927E-48FD-A1EF-4F11F14802DE}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -10376,7 +11767,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -10395,7 +11791,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953262091</XS>
 								<XO>0</XO>
@@ -10469,7 +11871,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>1</XS>
 							<XO>0</XO>
@@ -10508,7 +11916,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">20</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>900</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -10527,7 +11940,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.877172291</XS>
 								<XO>0</XO>
@@ -10622,7 +12041,13 @@ end)]]></ProtectedString>
 							<token name="ScaleType">0</token>
 							<bool name="Selectable">false</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.0700000003</XS>
 								<XO>0</XO>
@@ -10670,7 +12095,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{475D2470-0C33-40CC-8941-89B5B6DF9CB7}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{CDD8DB41-E1B3-4BB5-B8C3-D68D0064A200}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -10721,7 +12147,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -10740,7 +12171,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.953262091</XS>
 								<XO>0</XO>
@@ -10778,7 +12215,8 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
-								<string name="ScriptGuid">{4C1A08D7-AF81-4512-8961-CE982A37BE48}</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{952E7496-48FB-47EA-BCC1-17C7598E2C72}</string>
 								<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
 local SS = game:GetService('StudioService')
@@ -10793,6 +12231,793 @@ end]]></ProtectedString>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
 							</Properties>
+						</Item>
+					</Item>
+				</Item>
+				<Item class="Frame" referent="RBXDE4042D1E72C4FC5A6ACED4770D89F2F">
+					<Properties>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<bool name="AutoLocalize">true</bool>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">1</float>
+						<Color3 name="BorderColor3">
+							<R>0.105882362</R>
+							<G>0.164705887</G>
+							<B>0.207843155</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">1</int>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="Draggable">false</bool>
+						<int name="LayoutOrder">0</int>
+						<string name="Name">DefaultTool</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0</XS>
+							<XO>0</XO>
+							<YS>0</YS>
+							<YO>0</YO>
+						</UDim2>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<UDim2 name="Size">
+							<XS>1</XS>
+							<XO>0</XO>
+							<YS>1</YS>
+							<YO>0</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<int64 name="SourceAssetId">-1</int64>
+						<token name="Style">0</token>
+						<BinaryString name="Tags"></BinaryString>
+						<bool name="Visible">false</bool>
+						<int name="ZIndex">1</int>
+					</Properties>
+					<Item class="TextLabel" referent="RBX50559DA812AF4B47B3E7740A89F8C9C5">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>900</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Black.otf</url></CachedFaceId>
+							</Font>
+							<int name="LayoutOrder">0</int>
+							<float name="LineHeight">1</float>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="Name">TextLabel</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.0984490737</XS>
+								<XO>0</XO>
+								<YS>0.0310960524</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="RichText">false</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.877172291</XS>
+								<XO>0</XO>
+								<YS>0.0784891769</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<string name="Text">Default tool (beta)</string>
+							<Color3 name="TextColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<bool name="TextScaled">true</bool>
+							<float name="TextSize">14</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">true</bool>
+							<token name="TextXAlignment">0</token>
+							<token name="TextYAlignment">1</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+					</Item>
+					<Item class="ImageButton" referent="RBX76496443B75548F9B9879B204BFA6C41">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoButtonColor">true</bool>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>0.215686277</R>
+								<G>0.215686277</G>
+								<B>0.215686277</B>
+							</Color3>
+							<float name="BackgroundTransparency">0</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Content name="HoverImage"><null></null></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=6031091000</url></Content>
+							<Color3 name="ImageColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<Vector2 name="ImageRectOffset">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<Vector2 name="ImageRectSize">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<float name="ImageTransparency">0</float>
+							<int name="LayoutOrder">0</int>
+							<bool name="Modal">false</bool>
+							<string name="Name">Back</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.0229999982</XS>
+								<XO>0</XO>
+								<YS>0.0309999976</YS>
+								<YO>0</YO>
+							</UDim2>
+							<Content name="PressedImage"><null></null></Content>
+							<token name="ResampleMode">0</token>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<token name="ScaleType">0</token>
+							<bool name="Selectable">false</bool>
+							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.0700000003</XS>
+								<XO>0</XO>
+								<YS>0.0780000016</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<Rect2D name="SliceCenter">
+								<min>
+									<X>0</X>
+									<Y>0</Y>
+								</min>
+								<max>
+									<X>0</X>
+									<Y>0</Y>
+								</max>
+							</Rect2D>
+							<float name="SliceScale">1</float>
+							<int64 name="SourceAssetId">-1</int64>
+							<token name="Style">0</token>
+							<BinaryString name="Tags"></BinaryString>
+							<UDim2 name="TileSize">
+								<XS>1</XS>
+								<XO>0</XO>
+								<YS>1</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+						<Item class="UIAspectRatioConstraint" referent="RBXEB7526C68FB54591922471E651ACAA61">
+							<Properties>
+								<float name="AspectRatio">1</float>
+								<token name="AspectType">0</token>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<token name="DominantAxis">0</token>
+								<string name="Name">UIAspectRatioConstraint</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+							</Properties>
+						</Item>
+						<Item class="Script" referent="RBXD171BEABC73F40D3851FE8FBC2A8E940">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="Disabled">false</bool>
+								<Content name="LinkedSource"><null></null></Content>
+								<string name="Name">Script</string>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{60BDA7DC-4E08-4774-AE3A-243688CA53E2}</string>
+								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
+	script.Parent.Parent.Visible = false
+	script.Parent.Parent.Parent.Visible = false
+	local root = script.Parent.Parent.Parent.Parent
+	root.Home.Visible = true
+	root.Menu.Visible = true
+	root.NotificationFrame.Position = UDim2.new(0, 0, 0.84, 0)
+end)]]></ProtectedString>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+							</Properties>
+						</Item>
+						<Item class="UICorner" referent="RBXF9353D81CB8D4953A20B35A80C135F82">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<UDim name="CornerRadius">
+									<S>0</S>
+									<O>10</O>
+								</UDim>
+								<string name="Name">UICorner</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+							</Properties>
+						</Item>
+					</Item>
+					<Item class="TextLabel" referent="RBXB9552614C4234822908212F68F59CAA0">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
+							<int name="LayoutOrder">0</int>
+							<float name="LineHeight">1</float>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="Name">TextLabel</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.0223592464</XS>
+								<XO>0</XO>
+								<YS>0.146227866</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="RichText">false</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.953262091</XS>
+								<XO>0</XO>
+								<YS>0.0963172242</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<string name="Text">Choose a tool to show whenever you start blisstools.</string>
+							<Color3 name="TextColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<bool name="TextScaled">true</bool>
+							<float name="TextSize">14</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">true</bool>
+							<token name="TextXAlignment">0</token>
+							<token name="TextYAlignment">1</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+					</Item>
+					<Item class="ScrollingFrame" referent="RBX60E65891F6C941D0826AB91A015C9F81">
+						<Properties>
+							<bool name="Active">true</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticCanvasSize">2</token>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>0.215686277</R>
+								<G>0.215686277</G>
+								<B>0.215686277</B>
+							</Color3>
+							<float name="BackgroundTransparency">0</float>
+							<Color3 name="BorderColor3">
+								<R>0.105882362</R>
+								<G>0.164705887</G>
+								<B>0.207843155</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">1</int>
+							<Content name="BottomImage"><url>rbxasset://textures/ui/Scroll/scroll-bottom.png</url></Content>
+							<Vector2 name="CanvasPosition">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<UDim2 name="CanvasSize">
+								<XS>0</XS>
+								<XO>0</XO>
+								<YS>0</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="ClipsDescendants">true</bool>
+							<bool name="Draggable">false</bool>
+							<token name="ElasticBehavior">0</token>
+							<token name="HorizontalScrollBarInset">0</token>
+							<int name="LayoutOrder">0</int>
+							<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+							<string name="Name">ScrollingFrame</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.0223752148</XS>
+								<XO>0</XO>
+								<YS>0.271572828</YS>
+								<YO>0</YO>
+							</UDim2>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<Color3 name="ScrollBarImageColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="ScrollBarImageTransparency">0</float>
+							<int name="ScrollBarThickness">12</int>
+							<token name="ScrollingDirection">4</token>
+							<bool name="ScrollingEnabled">true</bool>
+							<bool name="Selectable">true</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">true</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.953246117</XS>
+								<XO>0</XO>
+								<YS>0.645119429</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-top.png</url></Content>
+							<token name="VerticalScrollBarInset">0</token>
+							<token name="VerticalScrollBarPosition">0</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+						<Item class="UICorner" referent="RBX889D524796C64569BC040776784D89B5">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<UDim name="CornerRadius">
+									<S>0</S>
+									<O>10</O>
+								</UDim>
+								<string name="Name">UICorner</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+							</Properties>
+						</Item>
+						<Item class="UIListLayout" referent="RBXB43C734170C24B09ABB2A8C41F462626">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<token name="FillDirection">1</token>
+								<token name="HorizontalAlignment">0</token>
+								<string name="Name">UIListLayout</string>
+								<UDim name="Padding">
+									<S>0</S>
+									<O>5</O>
+								</UDim>
+								<token name="SortOrder">2</token>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<token name="VerticalAlignment">1</token>
+							</Properties>
+						</Item>
+						<Item class="TextButton" referent="RBX7B7E8B56D5E0421CB5EB0E7494C58A75">
+							<Properties>
+								<bool name="Active">true</bool>
+								<Vector2 name="AnchorPoint">
+									<X>0</X>
+									<Y>0</Y>
+								</Vector2>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="AutoButtonColor">true</bool>
+								<bool name="AutoLocalize">true</bool>
+								<token name="AutomaticSize">0</token>
+								<Color3 name="BackgroundColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<float name="BackgroundTransparency">1</float>
+								<Color3 name="BorderColor3">
+									<R>0.105882362</R>
+									<G>0.164705887</G>
+									<B>0.207843155</B>
+								</Color3>
+								<token name="BorderMode">0</token>
+								<int name="BorderSizePixel">1</int>
+								<bool name="ClipsDescendants">false</bool>
+								<bool name="Draggable">false</bool>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
+								<int name="LayoutOrder">0</int>
+								<float name="LineHeight">1</float>
+								<int name="MaxVisibleGraphemes">-1</int>
+								<bool name="Modal">false</bool>
+								<string name="Name">TextButton</string>
+								<Ref name="NextSelectionDown">null</Ref>
+								<Ref name="NextSelectionLeft">null</Ref>
+								<Ref name="NextSelectionRight">null</Ref>
+								<Ref name="NextSelectionUp">null</Ref>
+								<UDim2 name="Position">
+									<XS>-0.210176811</XS>
+									<XO>0</XO>
+									<YS>0</YS>
+									<YO>0</YO>
+								</UDim2>
+								<bool name="RichText">false</bool>
+								<Ref name="RootLocalizationTable">null</Ref>
+								<float name="Rotation">0</float>
+								<bool name="Selectable">true</bool>
+								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
+								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
+								<UDim2 name="Size">
+									<XS>0.999000013</XS>
+									<XO>0</XO>
+									<YS>0.129999995</YS>
+									<YO>0</YO>
+								</UDim2>
+								<token name="SizeConstraint">0</token>
+								<int64 name="SourceAssetId">-1</int64>
+								<token name="Style">0</token>
+								<BinaryString name="Tags"></BinaryString>
+								<string name="Text">Day/Night Script (default)</string>
+								<Color3 name="TextColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<bool name="TextScaled">true</bool>
+								<float name="TextSize">14</float>
+								<Color3 name="TextStrokeColor3">
+									<R>0</R>
+									<G>0</G>
+									<B>0</B>
+								</Color3>
+								<float name="TextStrokeTransparency">1</float>
+								<float name="TextTransparency">0</float>
+								<token name="TextTruncate">0</token>
+								<bool name="TextWrapped">true</bool>
+								<token name="TextXAlignment">2</token>
+								<token name="TextYAlignment">1</token>
+								<bool name="Visible">true</bool>
+								<int name="ZIndex">1</int>
+							</Properties>
+							<Item class="UIPadding" referent="RBX797ED449FE5B4FF3BC57F41429AE98BA">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<string name="Name">UIPadding</string>
+									<UDim name="PaddingBottom">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingLeft">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingRight">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingTop">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+							<Item class="Script" referent="RBXF358E602ADDC4A4CABB606A9EE811AFF">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="Disabled">false</bool>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Script</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{C994AFA7-3129-4EA5-8AE0-FE5DA5DBA418}</string>
+									<ProtectedString name="Source"><![CDATA[local defaultkey = "DefaultTool"
+local defaultsetting = plugin:GetSetting(defaultkey)
+local defaultvalue = script.Parent.Parent.Parent.Parent.Parent.Parent.DefaultTool
+
+script.Parent.Activated:Connect(function()
+	plugin:SetSetting(defaultkey, "0")
+	defaultvalue.Value = 0
+end)
+
+local function settingupdate()
+	if defaultsetting.Value == "0" then
+		script.Parent.Text = "Day/Night Script (default) (selected)"
+	end
+end
+
+settingupdate()
+task.wait(2)
+defaultvalue:GetAttributeChangedSignal(settingupdate())]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+						</Item>
+						<Item class="TextButton" referent="RBX3DA651A0956842FEB1AA680686F26CF2">
+							<Properties>
+								<bool name="Active">true</bool>
+								<Vector2 name="AnchorPoint">
+									<X>0</X>
+									<Y>0</Y>
+								</Vector2>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="AutoButtonColor">true</bool>
+								<bool name="AutoLocalize">true</bool>
+								<token name="AutomaticSize">0</token>
+								<Color3 name="BackgroundColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<float name="BackgroundTransparency">1</float>
+								<Color3 name="BorderColor3">
+									<R>0.105882362</R>
+									<G>0.164705887</G>
+									<B>0.207843155</B>
+								</Color3>
+								<token name="BorderMode">0</token>
+								<int name="BorderSizePixel">1</int>
+								<bool name="ClipsDescendants">false</bool>
+								<bool name="Draggable">false</bool>
+								<Font name="FontFace">
+									<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+									<Weight>500</Weight>
+									<Style>Normal</Style>
+									<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+								</Font>
+								<int name="LayoutOrder">0</int>
+								<float name="LineHeight">1</float>
+								<int name="MaxVisibleGraphemes">-1</int>
+								<bool name="Modal">false</bool>
+								<string name="Name">TextButton</string>
+								<Ref name="NextSelectionDown">null</Ref>
+								<Ref name="NextSelectionLeft">null</Ref>
+								<Ref name="NextSelectionRight">null</Ref>
+								<Ref name="NextSelectionUp">null</Ref>
+								<UDim2 name="Position">
+									<XS>-0.210176811</XS>
+									<XO>0</XO>
+									<YS>0</YS>
+									<YO>0</YO>
+								</UDim2>
+								<bool name="RichText">false</bool>
+								<Ref name="RootLocalizationTable">null</Ref>
+								<float name="Rotation">0</float>
+								<bool name="Selectable">true</bool>
+								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
+								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
+								<UDim2 name="Size">
+									<XS>0.999000013</XS>
+									<XO>0</XO>
+									<YS>0.129999995</YS>
+									<YO>0</YO>
+								</UDim2>
+								<token name="SizeConstraint">0</token>
+								<int64 name="SourceAssetId">-1</int64>
+								<token name="Style">0</token>
+								<BinaryString name="Tags"></BinaryString>
+								<string name="Text">Texture Applier</string>
+								<Color3 name="TextColor3">
+									<R>1</R>
+									<G>1</G>
+									<B>1</B>
+								</Color3>
+								<bool name="TextScaled">true</bool>
+								<float name="TextSize">14</float>
+								<Color3 name="TextStrokeColor3">
+									<R>0</R>
+									<G>0</G>
+									<B>0</B>
+								</Color3>
+								<float name="TextStrokeTransparency">1</float>
+								<float name="TextTransparency">0</float>
+								<token name="TextTruncate">0</token>
+								<bool name="TextWrapped">true</bool>
+								<token name="TextXAlignment">2</token>
+								<token name="TextYAlignment">1</token>
+								<bool name="Visible">true</bool>
+								<int name="ZIndex">1</int>
+							</Properties>
+							<Item class="UIPadding" referent="RBXAC6637E2D1F242898121A0CE77870562">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<string name="Name">UIPadding</string>
+									<UDim name="PaddingBottom">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingLeft">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingRight">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<UDim name="PaddingTop">
+										<S>0</S>
+										<O>3</O>
+									</UDim>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
+							<Item class="Script" referent="RBX2401344D50F048C381CCDE476D559728">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="Disabled">false</bool>
+									<Content name="LinkedSource"><null></null></Content>
+									<string name="Name">Script</string>
+									<token name="RunContext">0</token>
+									<string name="ScriptGuid">{3AF4C956-BE52-4143-A610-DAAE7ECD54DD}</string>
+									<ProtectedString name="Source"><![CDATA[local defaultkey = "DefaultTool"
+local defaultsetting = plugin:GetSetting(defaultkey)
+local defaultvalue = script.Parent.Parent.Parent.Parent.Parent.Parent.DefaultTool
+
+script.Parent.Activated:Connect(function()
+	plugin:SetSetting(defaultkey, "1")
+	defaultvalue.Value = 1
+end)
+
+local function settingupdate()
+	if defaultsetting.Value == "1" then
+		script.Parent.Text = "Texture Applier (selected)"
+	end
+end
+
+settingupdate()
+task.wait(2)
+defaultvalue:GetAttributeChangedSignal(settingupdate())]]></ProtectedString>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+								</Properties>
+							</Item>
 						</Item>
 					</Item>
 				</Item>
@@ -10837,7 +13062,13 @@ end]]></ProtectedString>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
 					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
 					<UDim2 name="Size">
 						<XS>1</XS>
 						<XO>0</XO>
@@ -10907,7 +13138,13 @@ end]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.272445828</XS>
 							<XO>0</XO>
@@ -10947,7 +13184,12 @@ end]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -10968,7 +13210,13 @@ end]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11066,7 +13314,13 @@ end]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11115,7 +13369,7 @@ end]]></ProtectedString>
 									<B>0.207843155</B>
 								</Color3>
 								<token name="BorderMode">0</token>
-								<int name="BorderSizePixel">1</int>
+								<int name="BorderSizePixel">0</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
 								<Content name="HoverImage"><null></null></Content>
@@ -11154,7 +13408,13 @@ end]]></ProtectedString>
 								<token name="ScaleType">3</token>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -11204,7 +13464,8 @@ end]]></ProtectedString>
 							<bool name="Disabled">false</bool>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
-							<string name="ScriptGuid">{F900481F-AE5A-41E4-821C-F8C551678D08}</string>
+							<token name="RunContext">0</token>
+							<string name="ScriptGuid">{5158E7AD-AE03-4967-B01F-672CC52B485C}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
@@ -11291,7 +13552,13 @@ end)]]></ProtectedString>
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.272445828</XS>
 							<XO>0</XO>
@@ -11331,7 +13598,12 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -11352,7 +13624,13 @@ end)]]></ProtectedString>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11450,7 +13728,13 @@ end)]]></ProtectedString>
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11538,7 +13822,13 @@ end)]]></ProtectedString>
 								<token name="ScaleType">3</token>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -11588,7 +13878,8 @@ end)]]></ProtectedString>
 							<bool name="Disabled">false</bool>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
-							<string name="ScriptGuid">{E5757D44-ABF6-4557-915A-FF8ADA320D33}</string>
+							<token name="RunContext">0</token>
+							<string name="ScriptGuid">{1DB3CD7A-B6C7-4065-A7EC-9DA174DFBC05}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
@@ -11676,7 +13967,13 @@ end)
 						<Ref name="RootLocalizationTable">null</Ref>
 						<float name="Rotation">0</float>
 						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
 						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
 						<UDim2 name="Size">
 							<XS>0.272445828</XS>
 							<XO>0</XO>
@@ -11716,7 +14013,12 @@ end)
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<token name="Font">18</token>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+								<Weight>500</Weight>
+								<Style>Normal</Style>
+								<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+							</Font>
 							<int name="LayoutOrder">0</int>
 							<float name="LineHeight">1</float>
 							<int name="MaxVisibleGraphemes">-1</int>
@@ -11737,7 +14039,13 @@ end)
 							<float name="Rotation">0</float>
 							<bool name="Selectable">true</bool>
 							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11835,7 +14143,13 @@ end)
 							<Ref name="RootLocalizationTable">null</Ref>
 							<float name="Rotation">0</float>
 							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
 							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
 							<UDim2 name="Size">
 								<XS>0.732954562</XS>
 								<XO>0</XO>
@@ -11923,7 +14237,13 @@ end)
 								<token name="ScaleType">3</token>
 								<bool name="Selectable">false</bool>
 								<bool name="Selected">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
 								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
 								<UDim2 name="Size">
 									<XS>1</XS>
 									<XO>0</XO>
@@ -11973,7 +14293,8 @@ end)
 							<bool name="Disabled">false</bool>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
-							<string name="ScriptGuid">{BA200A2A-9D76-46A3-A6ED-015D495F8820}</string>
+							<token name="RunContext">0</token>
+							<string name="ScriptGuid">{F6305698-1C95-4E12-A352-A86B8FF9B058}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
