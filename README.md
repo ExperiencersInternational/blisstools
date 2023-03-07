@@ -1,6 +1,6 @@
-![blisstools Logo_SVG](https://user-images.githubusercontent.com/56035537/223287901-020e8e44-0f4d-4889-8d77-cfbc60e9848f.svg)
+![blisstools Logo_SVG|512x512](https://user-images.githubusercontent.com/56035537/223287901-020e8e44-0f4d-4889-8d77-cfbc60e9848f.svg)
 
-This plugin is now discontinued. Pull requests may be worked on but there's no guarantee.
+This plugin is now discontinued. Pull requests may be worked on but there's no guarantee. Thanks for supporting me!
 
 # blisstools
 Pure bliss. Contains a range of tools you can use in Roblox Studio.
