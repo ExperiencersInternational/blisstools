@@ -19,7 +19,7 @@
 				<ProtectedString name="Source"><![CDATA[--[[
 blisstools by @GamersInternational
 
-A small project to help level up your game. Last updated 7/3/2023.
+A small project to help level up your game. Last updated 8/6/2023.
 This plugin is made possible by many contributors, check them out in the plugins settings page.
 
 Plugin now discontinued.
@@ -70,7 +70,15 @@ if defaultsetting == "0" then
 elseif defaultsetting == "1" then
 	BaseGui.Home["Day/Night Cycle"].Visible = false
 	BaseGui.Home.TextureApplier.Visible = true
-end]]></ProtectedString>
+end
+
+warn([[blisstools has been discontinued. In order to continue enjoying support, plus receiving brand new tools, switch to my new plugin auroraSuite. It's my cleanest and best plugin yet, and you'll be enjoying code improvements plus new features to existing tools!
+
+Download it from the Plugin Marketplace: https://create.roblox.com/marketplace/asset/12757964010
+
+For most tools, it should be a seamless switch, however any existing teleport system installations, you may need to tweak the folders name to work correctly.
+
+Either way, thank you for enjoying my plugins!]])]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
@@ -81,7 +89,7 @@ end]]></ProtectedString>
 				<string name="Name">Version</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<string name="Value">v0.04.2</string>
+				<string name="Value">v0.04.4</string>
 			</Properties>
 		</Item>
 		<Item class="StringValue" referent="RBXB14535E8F00D4FB39A93A85F05552608">
@@ -90,7 +98,7 @@ end]]></ProtectedString>
 				<string name="Name">Build</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<string name="Value">52</string>
+				<string name="Value">57</string>
 			</Properties>
 		</Item>
 		<Item class="StringValue" referent="RBXCBDC5FB7A2CE4E69BAFD974E15398B09">
@@ -1209,7 +1217,7 @@ end]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{769AA333-E5B5-4C90-8C55-264A8247816F}</string>
+							<string name="ScriptGuid">{3D7104CB-DDD8-4484-A23E-6E1160E86ACC}</string>
 							<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
 local SS = game:GetService('StudioService')
@@ -1218,7 +1226,8 @@ local mkplace = game:GetService("MarketplaceService")
 local home = script.Parent.Parent
 
 -- if mkplace:UserOwnsGamePassAsync(userId, 28338464) then
-	script.Parent.Visible = false
+script.Parent.Visible = true
+--[[
 	home["Day/Night Cycle"].Position = UDim2.new(0.023, 0,0.153, 0)
 	home.ShiftToSprint.Position = UDim2.new(0.023, 0,0.153, 0)
 	home.TextureApplier.Position = UDim2.new(0.023, 0,0.153, 0)
@@ -1377,7 +1386,7 @@ end]]]]></ProtectedString>
 								<token name="SizeConstraint">0</token>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<string name="Text">What&apos;s new with blisstools?</string>
+								<string name="Text">Upgrade now for continued support</string>
 								<Color3 name="TextColor3">
 									<R>1</R>
 									<G>1</G>
@@ -1465,7 +1474,7 @@ end]]]]></ProtectedString>
 								<token name="SizeConstraint">0</token>
 								<int64 name="SourceAssetId">-1</int64>
 								<BinaryString name="Tags"></BinaryString>
-								<string name="Text">We&apos;ve refreshed some of our icons, and made some tools even better!</string>
+								<string name="Text">blisstools is no longer supported, and you&apos;ll need to upgrade to my new plugin, auroraSuite for the latest features.</string>
 								<Color3 name="TextColor3">
 									<R>1</R>
 									<G>1</G>
@@ -1513,7 +1522,7 @@ end]]]]></ProtectedString>
 								<int name="BorderSizePixel">1</int>
 								<bool name="ClipsDescendants">false</bool>
 								<bool name="Draggable">false</bool>
-								<Content name="Image"><url>http://www.roblox.com/asset/?id=6026663730</url></Content>
+								<Content name="Image"><url>http://www.roblox.com/asset/?id=12757813093</url></Content>
 								<Color3 name="ImageColor3">
 									<R>1</R>
 									<G>1</G>
@@ -1705,7 +1714,7 @@ end]]]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>http://www.roblox.com/asset/?id=8762394742</url></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=12757799858</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -2634,7 +2643,7 @@ end]]]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{841AADD0-3455-4976-8DA9-571354A89B62}</string>
+								<string name="ScriptGuid">{B34F9C42-FA37-448A-A4C7-2F3CB27ACF14}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local assetID = rt.AssetID
@@ -2772,7 +2781,7 @@ end)]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{1A3E7866-CD87-4242-842B-26A475522D25}</string>
+							<string name="ScriptGuid">{263BFA54-BB85-4C5A-8F89-A51FB71AF7B6}</string>
 							<ProtectedString name="Source"><![CDATA[local home = script.Parent.Parent
 
 script.Parent.MouseButton1Click:Connect(function()
@@ -3134,7 +3143,7 @@ home:GetAttributeChangedSignal("CurrentView"):Connect(ChangeViewText)]]></Protec
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{7E4998F8-DA44-4F7B-AE5F-55F7992B1CFF}</string>
+									<string name="ScriptGuid">{2B60DF8F-ED05-4D20-A37D-7D2FD7CA3538}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3275,7 +3284,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{A1D02489-A37A-4CCA-9C9B-8A2C03533F4B}</string>
+									<string name="ScriptGuid">{AD446959-6A3A-4CC6-ADAF-762364E24BC9}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3416,7 +3425,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{6821A5BF-1B62-424F-99F8-1F08DAC3B359}</string>
+									<string name="ScriptGuid">{0218C5F9-2325-403C-B51B-D702FB3FCE13}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3557,7 +3566,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{FA0DC6F4-FF0A-4DD7-982D-49B33BB03095}</string>
+									<string name="ScriptGuid">{102F9734-033F-4CD8-90B6-AA8676473AD8}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3698,7 +3707,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{D2E431E5-3A1C-4DBC-9094-E8D82AD2BBC3}</string>
+									<string name="ScriptGuid">{94EDEFB7-1441-4EC9-9BE7-5D12312293FC}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent.Parent.Parent
 	
@@ -3816,7 +3825,7 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>http://www.roblox.com/asset/?id=8721020857</url></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=12757855366</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -4438,7 +4447,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{578D7150-3913-4265-BCDA-C3C5DF033DBA}</string>
+								<string name="ScriptGuid">{4C4085E1-2EAD-4316-8599-56DAFAF33F76}</string>
 								<ProtectedString name="Source"><![CDATA[local ChangeHistoryService = game:GetService("ChangeHistoryService")
 local MarketplaceService = game:GetService("MarketplaceService")
 local Selection = game:GetService("Selection")
@@ -4621,7 +4630,7 @@ end)]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<token name="Style">0</token>
 							<BinaryString name="Tags"></BinaryString>
-							<string name="Text">Browse blisstools Texture Library</string>
+							<string name="Text">Browse Texture Library</string>
 							<Color3 name="TextColor3">
 								<R>1</R>
 								<G>1</G>
@@ -4686,7 +4695,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{3B7D9F6E-4050-4DC2-8E09-628B363EBBA5}</string>
+								<string name="ScriptGuid">{AD7C081A-9833-49B3-9573-B648BD0155E0}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent
 	root.Home.Visible = false
@@ -4798,7 +4807,7 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>http://www.roblox.com/asset/?id=8721315052</url></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=13630055181</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -5420,7 +5429,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">ShiftScript</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{4E7B1D33-33C3-4848-B6CD-02BB7B964F83}</string>
+								<string name="ScriptGuid">{EA884AA9-77C8-42BF-8DA2-7443129F8AD5}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local ws = rt.Walkspeed
@@ -5460,7 +5469,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Action</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{AF76B188-F1ED-4339-861A-98B8F5AAF346}</string>
+									<string name="ScriptGuid">{A66C1A42-4F92-4C60-963D-78F2D470DA5E}</string>
 									<ProtectedString name="Source"><![CDATA[-- Thanks to luisgamercooI231fan for submitting these changes
 local TabletJumpbuttonYoffset = 2.55 -- the mobile button offset on the Y axis(up) for tablets
 local PhoneJumpButtonoffset = 75 --the mobile button offset on the Y axis(up) for phones
@@ -5635,7 +5644,7 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>http://www.roblox.com/asset/?id=8800517050</url></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=13683858008</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -6123,7 +6132,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{7272797B-1F4B-4CB1-A4C7-AE103923946A}</string>
+								<string name="ScriptGuid">{D2153680-333B-40B9-90D1-03543CE1FB19}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local chs = game:GetService("ChangeHistoryService")
@@ -6402,7 +6411,7 @@ end)]]></ProtectedString>
 							<int name="BorderSizePixel">1</int>
 							<bool name="ClipsDescendants">false</bool>
 							<bool name="Draggable">false</bool>
-							<Content name="Image"><url>http://www.roblox.com/asset/?id=8720917024</url></Content>
+							<Content name="Image"><url>http://www.roblox.com/asset/?id=13683772848</url></Content>
 							<Color3 name="ImageColor3">
 								<R>1</R>
 								<G>1</G>
@@ -7331,7 +7340,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{6FBD5192-5058-4B05-A90E-B551B74844A6}</string>
+								<string name="ScriptGuid">{C997EDA4-9007-4A07-BF02-0BD80E462934}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local rt = script.Parent.Parent
 	local st = rt.StartTime
@@ -8050,7 +8059,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{9FD44738-7030-43DB-BA61-CFF6D0880453}</string>
+								<string name="ScriptGuid">{3CECA154-CD81-40D8-B190-DF2DDD88040B}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -8538,7 +8547,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{7AB1AEDB-DE7B-4CD9-BB0B-02B2B8CDD5D8}</string>
+								<string name="ScriptGuid">{62A7BB77-53B7-491C-B1E9-0B5BF4C4DC36}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -8938,7 +8947,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{F0A430BE-BB37-404C-B0CB-C09B2749E3EB}</string>
+								<string name="ScriptGuid">{6C3299B8-BD86-4DCC-A946-D3A882648E6B}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -9338,7 +9347,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{1018F58D-A468-4C7C-AEE5-B40338485E7D}</string>
+								<string name="ScriptGuid">{3B5E38D2-BEA8-41A7-BA22-E803C798A14E}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	local submenus = script.Parent.Parent.Parent.Parent.SubMenus
 	local root = submenus.Parent
@@ -9680,7 +9689,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{7D8DEE5D-50EC-4662-8700-698239456643}</string>
+								<string name="ScriptGuid">{B848A376-4714-4443-BCE2-3D23F66074E8}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -10035,7 +10044,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{F2ABDD09-BBC3-4081-B7C0-EA492D8B0D52}</string>
+									<string name="ScriptGuid">{E62D9663-29B8-4663-8698-CD85BAB6A626}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816208142"
@@ -10187,7 +10196,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{2D2E311E-571E-4830-8429-2BB1BEF7B05A}</string>
+									<string name="ScriptGuid">{FD0B7348-733F-485A-BE8E-050FC1EC63D2}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816211217"
@@ -10327,7 +10336,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{6995F649-F721-4A2D-8481-380208955601}</string>
+									<string name="ScriptGuid">{BC6BA688-1078-4CE7-A279-96436475B80B}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816210397"
@@ -10467,7 +10476,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{3B27ECC7-C8F7-4636-A63F-96092E4EA3B5}</string>
+									<string name="ScriptGuid">{7744D175-DDE1-43FE-A9A6-8FE4EC722A0D}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816208142"
@@ -10607,7 +10616,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{A37DD0B2-2976-4B1F-BF50-87BA7D2BC364}</string>
+									<string name="ScriptGuid">{FCA0BC3E-596F-4DF0-B3B2-CCCFB66CF45D}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "5816209419"
@@ -10747,7 +10756,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{F6C332B9-87A1-4C63-94A4-54001DB303FA}</string>
+									<string name="ScriptGuid">{2B509031-828D-41D3-8910-7A798005DAAB}</string>
 									<ProtectedString name="Source"><![CDATA[script.Parent.Activated:Connect(function()
 	local root = script.Parent.Parent.Parent.Parent.Parent
 	root.Home.TextureApplier.TextureToApply.TextBox.Text = "8852075154"
@@ -11025,7 +11034,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{AF81EBE2-AE87-491C-813F-2BE38D733F16}</string>
+								<string name="ScriptGuid">{B2856878-BF65-41F5-BE85-2A700ADFEEC5}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -11116,7 +11125,7 @@ end)]]></ProtectedString>
 							<token name="SizeConstraint">0</token>
 							<int64 name="SourceAssetId">-1</int64>
 							<BinaryString name="Tags"></BinaryString>
-							<string name="Text">blisstools is a free plugin developed by GamersInternational and many other contributors.</string>
+							<string name="Text">blisstools is a free plugin developed by GamersInternational and many other contributors. Upgrade to auroraSuite for continued support.</string>
 							<Color3 name="TextColor3">
 								<R>1</R>
 								<G>1</G>
@@ -11233,7 +11242,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{6B536B87-71FB-46B1-B86E-072364FEEA1D}</string>
+								<string name="ScriptGuid">{50D2765D-FEB7-4461-8597-E36EE6D346D1}</string>
 								<ProtectedString name="Source"><![CDATA[local p = script.Parent
 
 p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></ProtectedString>
@@ -11336,7 +11345,7 @@ p.Text = 'Version: ' .. p.Parent.Parent.Parent.Parent.Version.Value]]></Protecte
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{8BBF282E-FAE7-4FF1-9834-BABB7965DF34}</string>
+								<string name="ScriptGuid">{EFDE0E03-78CE-4DFB-A105-82CCB0BABBC7}</string>
 								<ProtectedString name="Source"><![CDATA[local p = script.Parent
 
 p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedString>
@@ -11716,7 +11725,7 @@ p.Text = 'Build: ' .. p.Parent.Parent.Parent.Parent.Build.Value]]></ProtectedStr
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{8BA496D9-927E-48FD-A1EF-4F11F14802DE}</string>
+								<string name="ScriptGuid">{376EA4E1-5829-4EA1-81BD-1AC066B3B8ED}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -12096,7 +12105,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{CDD8DB41-E1B3-4BB5-B8C3-D68D0064A200}</string>
+								<string name="ScriptGuid">{3D4C58C8-3142-4613-B8F2-41947557D6A5}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -12216,7 +12225,7 @@ end)]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{952E7496-48FB-47EA-BCC1-17C7598E2C72}</string>
+								<string name="ScriptGuid">{DECDAF9F-DAB8-4219-B95F-642D05A47767}</string>
 								<ProtectedString name="Source"><![CDATA[local Players = game:GetService("Players")
 local plr = Players.LocalPlayer
 local SS = game:GetService('StudioService')
@@ -12499,7 +12508,7 @@ end]]></ProtectedString>
 								<Content name="LinkedSource"><null></null></Content>
 								<string name="Name">Script</string>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{60BDA7DC-4E08-4774-AE3A-243688CA53E2}</string>
+								<string name="ScriptGuid">{86142E28-AE7D-4AB3-9CFC-2CB6716417CF}</string>
 								<ProtectedString name="Source"><![CDATA[script.Parent.MouseButton1Click:Connect(function()
 	script.Parent.Parent.Visible = false
 	script.Parent.Parent.Parent.Visible = false
@@ -12849,7 +12858,7 @@ end)]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{C994AFA7-3129-4EA5-8AE0-FE5DA5DBA418}</string>
+									<string name="ScriptGuid">{A539D664-727A-4673-8D96-ED1B2179187F}</string>
 									<ProtectedString name="Source"><![CDATA[local defaultkey = "DefaultTool"
 local defaultsetting = plugin:GetSetting(defaultkey)
 local defaultvalue = script.Parent.Parent.Parent.Parent.Parent.Parent.DefaultTool
@@ -12995,7 +13004,7 @@ defaultvalue:GetAttributeChangedSignal(settingupdate())]]></ProtectedString>
 									<Content name="LinkedSource"><null></null></Content>
 									<string name="Name">Script</string>
 									<token name="RunContext">0</token>
-									<string name="ScriptGuid">{3AF4C956-BE52-4143-A610-DAAE7ECD54DD}</string>
+									<string name="ScriptGuid">{0DD15D87-E801-48C2-BF73-1BF10B0F4FA9}</string>
 									<ProtectedString name="Source"><![CDATA[local defaultkey = "DefaultTool"
 local defaultsetting = plugin:GetSetting(defaultkey)
 local defaultvalue = script.Parent.Parent.Parent.Parent.Parent.Parent.DefaultTool
@@ -13465,7 +13474,7 @@ defaultvalue:GetAttributeChangedSignal(settingupdate())]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{5158E7AD-AE03-4967-B01F-672CC52B485C}</string>
+							<string name="ScriptGuid">{B869B393-4B3E-47F6-A874-CDA81F26140B}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
@@ -13879,7 +13888,7 @@ end)]]></ProtectedString>
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{1DB3CD7A-B6C7-4065-A7EC-9DA174DFBC05}</string>
+							<string name="ScriptGuid">{790B698C-56FE-4333-83E7-4F820F626847}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
@@ -14294,7 +14303,7 @@ end)
 							<Content name="LinkedSource"><null></null></Content>
 							<string name="Name">Script</string>
 							<token name="RunContext">0</token>
-							<string name="ScriptGuid">{F6305698-1C95-4E12-A352-A86B8FF9B058}</string>
+							<string name="ScriptGuid">{E6344716-9CB5-40E0-9A42-BF4658BDD8EB}</string>
 							<ProtectedString name="Source"><![CDATA[local par = script.Parent
 local ib = par.Frame
 local core = par.Parent.Parent
